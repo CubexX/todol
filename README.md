@@ -1,2 +1,2 @@
-# todol
+# Todol
 ToDo List
