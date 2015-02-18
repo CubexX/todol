@@ -93,7 +93,17 @@ func main() {
 				}
 			}
 		case "edit":
-			// edit note
+			if len(args[1:]) == 0 { // if not exists id
+				fmt.Println("Use\033[36m todol edit\033[32m <id> \033[0m<text>")
+			} else {
+				if len(args[2:]) == 0 { // if not exists text
+					fmt.Println("Use\033[36m todol edit\033[0m <id> \033[32m<text>\033[0m")
+				} else {
+					q := "UPDATE notes SET text='" + args[2] + "' WHERE id=" + args[1]
+					c.Exec(q)
+					fmt.Println("\033[32mNote with ID \033[31m" + args[1] + "\033[32m was updated\033[0m")
+				}
+			}
 		case "del":
 			if len(args[1:]) == 0 { // if not exists id
 				fmt.Println("Use\033[36m todol show \033[32m<all/id>\033[0m")
@@ -102,11 +112,11 @@ func main() {
 				if args[1] == "all" {
 					q := "DELETE FROM notes"
 					c.Exec(q)
-					fmt.Println("All notes was deleted")
+					fmt.Println("\033[31mAll notes was deleted\033[0m")
 				} else { // show note by id
 					q := "DELETE FROM notes WHERE id=" + args[1]
 					c.Exec(q)
-					fmt.Println("Note with id " + args[1] + " was deleted")
+					fmt.Println("\033[32mNote with ID \033[31m" + args[1] + "\033[32m was deleted\033[0m")
 				}
 			}
 		// if not exists command
