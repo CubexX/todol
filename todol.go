@@ -33,7 +33,7 @@ func main() {
 			// help
 			"\033[36m add\033[32m <text>\033[0m - add a note to your Todol\n",
 			"\033[36m show\033[32m <all/id>\033[0m - show your notes/note by id\n",
-			//"\033[36m edit\033[32m <id> <new text>\033[0m - edit your note by id\n",
+			"\033[36m edit\033[32m <id> <new text>\033[0m - edit your note by id\n",
 			"\033[36m del\033[32m <all/id>\033[0m - delete all notes/by id")
 	} else {
 		switch args[0] {
